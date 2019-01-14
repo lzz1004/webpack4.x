@@ -1,4 +1,5 @@
 const path = require('path')
+const uglify = require('uglifyjs-webpack-plugin')// 压缩文件用
 
 module.exports = {
   // 入口
@@ -15,13 +16,20 @@ module.exports = {
   module:{
     rules: [
       {
-        test:/\.css$/,
-        use:['style-loader','css-loader']
+        test: /\.css$/,
+        // use: ['style-loader','css-loader'],    // 第1种
+        // loader: ['style-loader','css-loader'], // 第2种
+        use: [                                    // 第3种
+          {loader: 'style-loader'},
+          {loader: 'css-loader'}
+        ]
       }
     ]
   },
   //插件，用于生产模版和各项功能
-  plugins:[],
+  plugins:[
+    // new uglify()
+  ],
   //配置webpack开发服务功能
   devServer:{
     contentBase: path.resolve(__dirname,'dist'),// 热更新路径配置
