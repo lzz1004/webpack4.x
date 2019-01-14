@@ -1,2 +1,11 @@
 # webpack4.x
-webpack
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
