@@ -53,7 +53,8 @@ module.exports = {
           },
           "css-loader"
         ]
-      },{
+      },
+      {
         test: /\.(png|jpg|gif)/,
         use:[{
           loader: 'url-loader',
@@ -62,9 +63,20 @@ module.exports = {
             outputPath:'images/'
           }
         }]
-      },{
+      },
+      {
         test: /\.(html|htm)$/i,
         use: ['html-withimg-loader']
+      },
+      {
+        test: /\.less$/,
+        use: [{
+               loader: "style-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS
+            },{
+                loader: "less-loader" // compiles Less to CSS
+            }]
       }
     ]
   },
