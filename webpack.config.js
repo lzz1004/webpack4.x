@@ -71,12 +71,19 @@ module.exports = {
       {
         test: /\.less$/,
         use: [{
-               loader: "style-loader" // creates style nodes from JS strings
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            },{
-                loader: "less-loader" // compiles Less to CSS
-            }]
+            loader: "style-loader" // creates style nodes from JS strings
+        }, {
+            loader: "css-loader" // translates CSS into CommonJS
+        },{
+            loader: "less-loader" // compiles Less to CSS
+        }]
+      },
+      {
+        test:/\.(jsx|js)$/,
+        use:{
+          loader:'babel-loader'
+        },
+        exclude:/node_modules/
       }
     ]
   },
@@ -92,7 +99,7 @@ module.exports = {
     }),
     // new extractTextPlugin('/css/index.css'), // 指定css文件 
     new MiniCssExtractPlugin({
-      filename: "[name].css",// 生成的css文件名称
+      filename: "css/[name].css",// 生成的css文件名称
     })
   ],
   //配置webpack开发服务功能
